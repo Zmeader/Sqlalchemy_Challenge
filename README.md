@@ -18,4 +18,4 @@ The goal of the precipitation analysis is to understand what trends exist over t
 
 5. Once the data for the entire year has been pulled, a dataframe is created via `pd.DataFrame(precip_data, columns = ['date', "prcp"])` which is illustrated below.
 
-![screenshot](Images/df_screenshot.png)
+![screenshot](Instructions/Images/df_screenshot.png)
