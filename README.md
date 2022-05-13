@@ -1,6 +1,6 @@
 # Sqlalchemy Overview
 
-The goal of this project/ repository is to create multiple histograms from a hawaii weather database and then create an API from said database in order for others to pull specific information such as the amount of rainfall for a day or range of days. See the steps below for each section of the related analysis and application.
+The goal of this project/repository is to create multiple histograms from a Hawaii weather database and then create an API from said database. This is created for others to pull specific information such as the amount of rainfall for a day or range of days. See the steps below for each section of the related analysis and application.
 
 # Exploratory Precipitation Analysis
 
@@ -24,26 +24,25 @@ The goal of the precipitation analysis is to understand what trends exist over t
 
 # Station Analysis
 
-The goal of the station analysis was to better undrstand if there is a relationship between the temperature of a locatioon and the frequency of rain.
+The goal of the station analysis was to better understand if there is a relationship between the temperature of a location and the frequency of rain.
 
 1. The first step is to isolate the locations associated with the database. In order to complete that, a query... `active_station = session.query(measurement.station).group_by(measurement.station).order_by(func.count(measurement.date).desc()).first()` is used to pull the most active location id.
 
-2. Once the most active ID, **USC00519281**, was isolated, another query was used to pull all of the TOBS data was pulled for the previous year. `session.query(measurement.tobs).filter(measurement.station==most_active).filter(measurement.date>=date).all()`
+2. Once the most active ID, **USC00519281**, was isolated, another query was used to pull all of the TOBS data for the previous year. `session.query(measurement.tobs).filter(measurement.station==most_active).filter(measurement.date>=date).all()`
 
-3. Once the data has been pulled and isolated, a histogram was created to show the relatinship of temperature and fequency of precipitation. See Graph below.
+3. Once the data was pulled and isolated, a histogram was created to show the relationship of temperature and fequency of precipitation. See graph below.
 
 ![plot_2](Instructions/Images/TOBS_Histogram.png)
 
 
 # Creating an API
 
-In order for individuals to be able to pull the data from the database, an API was created with 5 routes for different kinds of information.
+In order for individuals to be able to pull the data from the database, an **API** was created with multiple routes for different kinds of information.
 
 1. If somebody wants to pull the precipitation data for specific dates, they would use... `/api/v1.0/precipitation`.
 
-2. If somebody wants to pull the station name  and ID they would use `/api/v1.0/stations`.
+2. If somebody wants to pull the station name and ID they would use... `/api/v1.0/stations`.
 
-3. If somebody wanted to pull the TOBS data for the date range of 2016-08-23 to 2017-08-23 they would use `/api/v1.0/tobs`.
+3. If somebody wanted to pull the TOBS data for the date range of 2016-08-23 to 2017-08-23 they would use... `/api/v1.0/tobs`.
 
-4. Lastly, if the same data wanted to be pulled for a range, the api route would be `/api/v1.0/<start_date>/<end_date>`.
-
+4. Lastly, if the same data wanted to be pulled for a range, the api route would be... `/api/v1.0/<start_date>/<end_date>`.
